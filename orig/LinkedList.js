@@ -10,11 +10,13 @@ class LinkedList {
         }
 
         let current = this.head;
-        for (let i = 0; i < this.length; i++) {
+        for (let i = 0; i < this.length - 1; i++) {
             current = current.next;
         }
-
-        const newNode = new LinkedListNode(data, current.next);
+        console.log(`current: ${current.value}`);
+        const newNode = new LinkedListNode(data, current);
+        console.log(`new node: ${newNode.value}`);
+        
         this.length++;
     }
 

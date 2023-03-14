@@ -5,3 +5,8 @@ linkedList.toString();
 
 console.log(linkedList.at(0).value);
 console.log(linkedList.at(1).value);
+
+console.log(`size: ${linkedList.size()}`);
+
+linkedList.append(50);
+console.log(linkedList.toString());

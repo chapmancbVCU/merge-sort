@@ -27,12 +27,12 @@ describe(`#append`, () => {
     describe('Add element to end of list', () => {
         test('New element is added to end of list', () => {
             const linkedList = LinkedList.fromValues(10, 20);
-            const originalTail = linkedList.at(20);
-            linkedList.append(3);
-            const newTail = linkedList.at(30);
-            
-            expect(originalTail).toBe(2);
-            expect(newTail).toBe(30);
+            const originalTail = linkedList.at(1);
+            linkedList.append(30);
+            const newTail = linkedList.at(2);
+
+            expect(originalTail.value).toBe(20);
+            expect(newTail.value).toBe(30);
 
         })
     });

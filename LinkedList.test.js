@@ -15,11 +15,28 @@ describe('#prepend', () => {
     });
 });
 
-/*describe(`#append`, () => {
-    test('Add element to end of list', () => {
+describe(`#append`, () => {
+    describe(`Add new element to tail of list of length 0`, () => {
+        test(`Returns null`, () => {
+            const linkedList = new LinkedList();
 
-    })
-});*/
+            expect(linkedList.head).toBeNull();
+        });
+    });
+
+    describe('Add element to end of list', () => {
+        test('New element is added to end of list', () => {
+            const linkedList = LinkedList.fromValues(10, 20);
+            const originalTail = linkedList.at(20);
+            linkedList.append(3);
+            const newTail = linkedList.at(30);
+            
+            expect(originalTail).toBe(2);
+            expect(newTail).toBe(30);
+
+        })
+    });
+});
 
 // Get element at index
 describe('#at', () => {
@@ -50,7 +67,7 @@ describe('#at', () => {
     describe('Index in the middle', () => {
         test('Return the index at the middle', () => {
             const linkedList = LinkedList.fromValues(10, 20, 30, 40);
-            
+
             expect(linkedList.at(2).value).toBe(30);
         });
     });

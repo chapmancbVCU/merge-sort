@@ -4,17 +4,27 @@ class LinkedList {
         this.length = 0;
     }
 
-    append(index, data) {
-
-    }
-
-    at(index) {
-        if(index <0 || index >= this.length) {
+    append(data) {
+        if (this.length == 0) {
             return null;
         }
 
         let current = this.head;
-        for(let i = 0; i < index; i++) {
+        for (let i = 0; i < this.length; i++) {
+            current = current.next;
+        }
+
+        const newNode = new LinkedListNode(data, current.next);
+        this.length++;
+    }
+
+    at(index) {
+        if  (index <0 || index >= this.length) {
+            return null;
+        }
+
+        let current = this.head;
+        for (let i = 0; i < index; i++) {
             current = current.next;
         }
         return current;
@@ -33,6 +43,7 @@ class LinkedList {
     size() {
         return this.length;
     }
+
     toString() {
         let output = '';
         let current = this.head;

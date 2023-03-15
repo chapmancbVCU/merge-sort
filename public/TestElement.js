@@ -7,6 +7,7 @@ exports.TestElement = void 0;
  * class will have two instance variables.  First is the number which we will
  * be sorting against and the second is an auxiliary value which is the
  * original position in the linked list.
+ * @author Chad Chapman
  */
 class TestElement {
     /**
@@ -25,6 +26,12 @@ class TestElement {
      */
     compareTo(other) {
         return this.key - other.key;
+    }
+    getAuxiliary() {
+        return this.auxiliary;
+    }
+    getKey() {
+        return this.key;
     }
     /**
      * This toString method returns a string containing the key and auxiliary

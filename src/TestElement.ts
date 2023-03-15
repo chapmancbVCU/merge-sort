@@ -4,6 +4,7 @@
  * class will have two instance variables.  First is the number which we will 
  * be sorting against and the second is an auxiliary value which is the 
  * original position in the linked list.
+ * @author Chad Chapman
  */
 export class TestElement {
     /**
@@ -35,6 +36,14 @@ export class TestElement {
      */
     compareTo(other: TestElement): number {
         return this.key - other.key;
+    }
+
+    getAuxiliary(): number {
+        return this.auxiliary;
+    }
+    
+    getKey(): number {
+        return this.key;
     }
 
     /**

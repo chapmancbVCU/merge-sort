@@ -27,4 +27,14 @@ describe('#compareTo', () => {
             expect(result).toBeLessThan(0);
         });
     });
+
+    describe('When a is greater than b', () => {
+        test('Returns greater than 0', () => {
+            const a = new TestElement(2, 1);
+            const b = new TestElement(1, 2);
+            const result = a.compareTo(b);
+            
+            expect(result).toBeGreaterThan(0);
+        });
+    });
 });

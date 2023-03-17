@@ -194,7 +194,7 @@ describe('#find', () => {
         test('Return true', () => {
             const linkedList = LinkedList.fromValues(10, 20, 30);
             
-            expect(linkedList.find(30)).toBe(30);
+            expect(linkedList.find(30)).toBe(2);
         });
     });
 });

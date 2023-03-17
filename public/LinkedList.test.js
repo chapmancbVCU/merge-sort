@@ -123,6 +123,24 @@ describe('#at', () => {
     });
 });
 
+describe('#contains', () => {
+    describe('When value is not in the list', () => {
+        test('Return false', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            
+            expect(linkedList.contains(40)).toBe(false);
+        });
+    });
+
+    describe('When value is in the list', () => {
+        test('Return true', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            
+            expect(linkedList.contains(30)).toBe(true);
+        });
+    });
+});
+
 describe('#getFirst', () => {
     describe('When head is null', () => {
         test('Return null for empty linked list', () => {
@@ -159,6 +177,24 @@ describe('#getLast', () => {
 
             expect(last.data.getKey()).toBe(30);
             expect(last.data.getAuxiliary()).toBe(3);
+        });
+    });
+});
+
+describe('#find', () => {
+    describe('When value is not in the list', () => {
+        test('Return null', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            
+            expect(linkedList.find(40)).toBeNull();
+        });
+    });
+
+    describe('When value is in the list', () => {
+        test('Return true', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            
+            expect(linkedList.find(30)).toBe(30);
         });
     });
 });

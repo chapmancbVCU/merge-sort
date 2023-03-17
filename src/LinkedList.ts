@@ -80,8 +80,29 @@ export class LinkedList {
         return linkedList;
     }
 
+    /**
+     * Getter function for the first element of the linked list which is 
+     * called head.
+     * @returns The first element of the linked list.
+     */
     getFirst() {
         return this.head;
+    }
+
+    /**
+     * Getter function for the tail of this linked list.
+     * @returns Returns the tail of the linked list.
+     */
+    getLast() {
+        if (this.head == null) {
+            return null;
+        }
+
+        let current = this.head;
+        for (let i = 0; i < this.length - 1; i++) {
+            current = current.next;
+        }
+        return current;
     }
     
     /**

@@ -39,7 +39,7 @@ class TestElement {
      * @returns A string in the form "key <auxiliary>".
      */
     toString() {
-        return this.key + ' <' + this.auxiliary + '>';
+        return '[' + this.key + ' (' + this.auxiliary + ')]';
     }
 }
 exports.TestElement = TestElement;

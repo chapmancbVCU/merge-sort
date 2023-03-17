@@ -9,3 +9,7 @@ const linkedList = LinkedList_1.LinkedList.fromValues(10, 20);
 const element = new TestElement_1.TestElement(30, 3);
 linkedList.append(element);
 console.log(linkedList.toString());
+const first = linkedList.getFirst();
+console.log(`first: ${first.data.getKey()}`);
+const last = linkedList.getLast();
+console.log(`Last: ${last === null || last === void 0 ? void 0 : last.data.getKey()}`);

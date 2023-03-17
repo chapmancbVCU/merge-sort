@@ -105,15 +105,36 @@ export class LinkedList {
         return current;
     }
 
-    pop() {
-        
-    }
     /**
-     * Addes element to front of the linked list.
+     * Removes last element from a LinkedList.
+     * @returns null when we have an empty list.
+     */
+    removeLast() {
+        if (this.head == null) {
+            return null;
+        }
+
+        if (this.length == 1) {
+            this.head = null!;
+        }
+        else {
+            let current = this.head;
+            let previous = current;
+            for (let i = 0; i < this.length - 1; i++) {
+                previous = current;
+                current = current.next;
+            }
+            previous.next = current.next;
+        }
+        this.length--;
+    }
+
+    /**
+     * Adds element to front of the linked list.
      * @param { TestElement} element The element we want to add to a 
      * LinkListNode of this LinkedList. 
      */
-    prepend(element: TestElement): void {
+    prepend(element: TestElement ): void {
         const newNode = new LinkedListNode(element, this.head);
         this.head = newNode;
         this.length++;

@@ -123,6 +123,8 @@ describe('#append', () => {
             
             expect(linkedList.head.data.getKey()).toBe(10);
         });
+    });
+
     describe('Add element to end of existing list', () => {
         test('Element added to end of list', () => {
             const linkedList = LinkedList.fromValues(10, 20, 30);
@@ -132,6 +134,14 @@ describe('#append', () => {
             expect(linkedList.at(3).data.getKey()).toBe(40);
             expect(linkedList.at(3).data.getAuxiliary()).toBe(4);
         });
-    })
-    })
+    });
+});
+
+describe('#toString', () => {
+    test('Prints formatted string', () => {
+        const linkedList = LinkedList.fromValues(10, 20);
+        const result = linkedList.toString();
+        
+        expect(result).toBe('[10 (1)] => [20 (2)] => null');
+    });
 });

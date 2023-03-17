@@ -1,3 +1,5 @@
+import { LinkedList } from "./LinkedList";
+
 /**
  * @class A class that creates an element for testing.  Each linked list node 
  * will have an object that is an instance of this class as its value.  This 
@@ -52,7 +54,7 @@ export class TestElement {
      * @returns A string in the form "key <auxiliary>".
      */
     toString(): string {
-        return this.key + ' <' + this.auxiliary + '>';
+        return '[' + this.key + ' (' + this.auxiliary + ')]';
     }
 
 }

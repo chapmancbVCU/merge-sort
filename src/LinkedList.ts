@@ -1,7 +1,113 @@
-class LinkedList {
+/******************************************************************************
+ * IMPORTS                                                                    *
+ *****************************************************************************/
+import { TestElement } from "./TestElement";
 
+
+/**
+ * @class Implementation of the LinkedList class.
+ * @author Chad Chapman
+ */
+export class LinkedList {
+    head: LinkedListNode;
+    length: number;
+    constructor() {
+        this.head = null!;
+        this.length = 0;
+    }
+
+    append(element: TestElement) {
+        // Simply prepend if length is 0.
+        if (this.length === 0) {
+            return this.prepend(element);
+        }
+
+        const last = this.at(this.length - 1);
+
+        // Check if last node is null.
+        if(last == null) {
+            return null;
+        }
+        
+        last.next = new LinkedListNode(element, last.next);
+        this.length++;
+    }
+
+    /**
+     * Returns the node at a given index.
+     * @param { number} index The index for the node we want to retrieve.
+     * @returns The node at the given index.
+     */
+    at(index: number) {
+        // If index greater than list length or less than 0.
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+
+        let current = this.head;
+        for (let i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+
+    /**
+     * Creates a LinkedList whose elements key instance variable is set to the 
+     * values passed in the function call.
+     * @param { number } values An array of values we want to give to each 
+     * element in a linked list.
+     * @returns LinkedList with the elements whose data corresponds to values
+     * passed in as an array.
+     */
+    static fromValues = function(...values: number[]): LinkedList {
+        const linkedList = new LinkedList();
+        for (let i = values.length - 1; i >= 0; i--) {
+            const element = new TestElement(values[i], i + 1);
+            linkedList.prepend(element);
+        }
+
+        return linkedList;
+    }
+
+    /**
+     * Addes element to front of the linked list.
+     * @param { TestElement} element The element we want to add to a 
+     * LinkListNode of this LinkedList. 
+     */
+    prepend(element: TestElement) {
+        const newNode = new LinkedListNode(element, this.head);
+        this.head = newNode;
+        this.length++;
+    }
+
+    /**
+     * Returns as a string, the contents of the LinkedList.
+     * @returns The linked list.
+     */
+    toString() {
+        let output = '';
+        let current = this.head;
+
+        while (current) {
+            output = `${output}${current.data.toString()} => `;
+            current = current.next;
+        }
+
+        return `${output}null`;
+    }
 }
 
+
+/**
+ * @class The LinkedListNode class represents each node in a linked list. 
+ * Each node contains an object of the Test Element class.
+ * @author Chad Chapman
+ */
 class LinkedListNode {
-    
+    public data: TestElement;
+    public next: LinkedListNode;
+    constructor(data: TestElement, next: LinkedListNode) {
+        this.data = data;
+        this.next = next;
+    }
 }

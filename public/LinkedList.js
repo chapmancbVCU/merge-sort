@@ -57,6 +57,13 @@ class LinkedList {
         this.length++;
     }
     /**
+     * Returns the value for the length of the LinkedList.
+     * @returns The length of the LinkedList.
+     */
+    size() {
+        return this.size;
+    }
+    /**
      * Returns as a string, the contents of the LinkedList.
      * @returns The linked list.
      */

@@ -180,6 +180,43 @@ describe('#prepend', () => {
     });
 });
 
+describe('#removeLast', () => {
+    describe('For an empty linked list', () => {
+        test('Return null for empty linked list', () => {
+            const linkedList = new LinkedList();
+            linkedList.removeLast();
+
+            expect(linkedList.head).toBeNull();
+            expect(linkedList.size()).toBe(0);
+        });
+    });
+
+    describe('When removing node of list of size=1', () => {
+        test('We should get head=null', () => {
+            const linkedList = LinkedList.fromValues(10);
+            linkedList.removeLast();
+
+            expect(linkedList.head).toBeNull();
+            expect(linkedList.size()).toBe(0);
+        });
+    });
+
+    describe('When removing node from a list size > 1', () => {
+        const linkedList = LinkedList.fromValues(10, 20, 30);
+        
+        const prevLast = linkedList.at(linkedList.size() - 1);
+        const prevLength = linkedList.size();
+        linkedList.removeLast();
+
+        const last = linkedList.at(linkedList.size() - 1);
+        
+        expect(prevLast.data.getKey()).toBe(30);
+        expect(prevLength).toBe(3);
+        expect(last.data.getKey()).toBe(20);
+        expect(linkedList.size()).toBe(2);
+    });
+});
+
 describe('#size', () => {
     test('Returns size of LinkedList', () => {
         const linkedList = LinkedList.fromValues(10, 20);

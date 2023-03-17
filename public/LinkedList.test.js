@@ -143,6 +143,26 @@ describe('#getFirst', () => {
     });
 });
 
+describe('#getLast', () => {
+    describe('For an empty linked list', () => {
+        test('Return null for empty linked list', () => {
+            const linkedList = new LinkedList();
+
+            expect(linkedList.getFirst()).toBeNull();
+        });
+    });
+
+    describe('for a non-empty linked list', () => {
+        test('Returns last element of a linked list', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            const last = linkedList.getLast();
+
+            expect(last.data.getKey()).toBe(30);
+            expect(last.data.getAuxiliary()).toBe(3);
+        });
+    });
+});
+
 describe('#prepend', () => {
     test('Adds element to the beginning of the list', () => {
         let element1 = new TestElement(10, 1);

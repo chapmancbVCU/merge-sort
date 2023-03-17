@@ -145,7 +145,7 @@ describe('#size', () => {
         const linkedList = LinkedList.fromValues(10, 20);
         const length = linkedList.size();
 
-        expect(length).toBe(1);
+        expect(length).toBe(2);
     });
 });
 

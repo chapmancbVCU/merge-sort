@@ -46,6 +46,9 @@ class LinkedList {
         }
         return current;
     }
+    getFirst() {
+        return this.head;
+    }
     /**
      * Addes element to front of the linked list.
      * @param { TestElement} element The element we want to add to a

@@ -96,9 +96,9 @@ export class LinkedList {
      * @returns The length of the LinkedList.
      */
     size() {
-        return this.size;
+        return this.length;
     }
-    
+
     /**
      * Returns as a string, the contents of the LinkedList.
      * @returns The linked list.

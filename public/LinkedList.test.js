@@ -123,6 +123,26 @@ describe('#at', () => {
     });
 });
 
+describe('#getFirst', () => {
+    describe('When head is null', () => {
+        test('Return null for empty linked list', () => {
+            const linkedList = new LinkedList();
+
+            expect(linkedList.getFirst()).toBeNull();
+        });
+    });
+
+    describe('Not empty list', () => {
+        test('Return head then verifiy data and position', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            const head = linkedList.getFirst();
+            
+            expect(head.data.getKey()).toBe(10);
+            expect(head.data.getAuxiliary()).toBe(1);
+        });
+    });
+});
+
 describe('#prepend', () => {
     test('Adds element to the beginning of the list', () => {
         let element1 = new TestElement(10, 1);

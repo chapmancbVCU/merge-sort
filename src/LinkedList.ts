@@ -9,8 +9,21 @@ import { TestElement } from "./TestElement";
  * @author Chad Chapman
  */
 export class LinkedList {
+    /**
+     * The first element of this LinkedList.
+     * @type { LinkedListNode }
+     */
     head: LinkedListNode;
+
+    /**
+     * The length of this LinkedList.
+     * @type { number }
+     */
     length: number;
+
+    /**
+     * Default constructor that sets head to null and length to 0.
+     */
     constructor() {
         this.head = null!;
         this.length = 0;
@@ -22,13 +35,12 @@ export class LinkedList {
             return this.prepend(element);
         }
 
-        const last = this.at(this.length - 1);
-
         // Check if last node is null.
+        const last = this.at(this.length - 1);
         if(last == null) {
             return null;
         }
-        
+
         last.next = new LinkedListNode(element, last.next);
         this.length++;
     }
@@ -65,7 +77,6 @@ export class LinkedList {
             const element = new TestElement(values[i], i + 1);
             linkedList.prepend(element);
         }
-
         return linkedList;
     }
 
@@ -92,7 +103,6 @@ export class LinkedList {
             output = `${output}${current.data.toString()} => `;
             current = current.next;
         }
-
         return `${output}null`;
     }
 }
@@ -104,8 +114,25 @@ export class LinkedList {
  * @author Chad Chapman
  */
 class LinkedListNode {
+    /**
+     * The object stored in each LinkedListNode
+     * @type { TestElement }
+     */
     public data: TestElement;
+
+    /**
+     * The next node of this linked list.
+     * @type { LinkedListNode }
+     */
     public next: LinkedListNode;
+
+    /**
+     * Constructor for creating a new LinkedListNode.  It accepts the data 
+     * that will be stored in this node and the next node.
+     * @param { TestElement } data The test element object is the data that is 
+     * associated with a node.  
+     * @param { LinkedListNode } next The next element after this node. 
+     */
     constructor(data: TestElement, next: LinkedListNode) {
         this.data = data;
         this.next = next;

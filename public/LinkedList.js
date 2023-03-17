@@ -10,6 +10,9 @@ const TestElement_1 = require("./TestElement");
  * @author Chad Chapman
  */
 class LinkedList {
+    /**
+     * Default constructor that sets head to null and length to 0.
+     */
     constructor() {
         this.head = null;
         this.length = 0;
@@ -19,8 +22,8 @@ class LinkedList {
         if (this.length === 0) {
             return this.prepend(element);
         }
-        const last = this.at(this.length - 1);
         // Check if last node is null.
+        const last = this.at(this.length - 1);
         if (last == null) {
             return null;
         }
@@ -90,6 +93,13 @@ LinkedList.fromValues = function (...values) {
  * @author Chad Chapman
  */
 class LinkedListNode {
+    /**
+     * Constructor for creating a new LinkedListNode.  It accepts the data
+     * that will be stored in this node and the next node.
+     * @param { TestElement } data The test element object is the data that is
+     * associated with a node.
+     * @param { LinkedListNode } next The next element after this node.
+     */
     constructor(data, next) {
         this.data = data;
         this.next = next;

@@ -129,8 +129,11 @@ describe('#append', () => {
         test('Element added to end of list', () => {
             const linkedList = LinkedList.fromValues(10, 20, 30);
             const element = new TestElement(40, 4);
+            const prevLast = linkedList.at(2);
             linkedList.append(element);
 
+            expect(prevLast.data.getKey()).toBe(30);
+            expect(prevLast.data.getAuxiliary()).toBe(3);
             expect(linkedList.at(3).data.getKey()).toBe(40);
             expect(linkedList.at(3).data.getAuxiliary()).toBe(4);
         });

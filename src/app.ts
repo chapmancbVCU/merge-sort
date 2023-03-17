@@ -16,3 +16,13 @@ console.log(`first: ${first.data.getKey()}`);
 
 const last = linkedList.getLast();
 console.log(`Last: ${last?.data.getKey()}`);
+
+console.log(linkedList.size());
+linkedList.removeLast();
+linkedList.removeLast();
+linkedList.removeLast();
+console.log(linkedList.toString());
+console.log(linkedList.size());
+linkedList.append(element);
+console.log(linkedList.toString());
+console.log(linkedList.size());

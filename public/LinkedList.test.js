@@ -63,20 +63,29 @@ describe('#toString', () => {
 /******************************************************************************
  * LinkedList Class                                                           *
  *****************************************************************************/
-describe('#prepend', () => {
-    test('Adds element to the beginning of the list', () => {
-        let element1 = new TestElement(10, 1);
-        let element2 = new TestElement(20, 2);
+describe('#append', () => {
+    describe('Added to new list', () => {
+        test('Element added to beginning of new list', () => {
+            const linkedList = new LinkedList();
+            const element = new TestElement(10, 1);
+            linkedList.append(element);
+            
+            expect(linkedList.head.data.getKey()).toBe(10);
+        });
+    });
 
-        const linkedList = new LinkedList();
-        linkedList.prepend(element1);
-        
-        const originalHead = linkedList.head;
-        linkedList.prepend(element2);
+    describe('Add element to end of existing list', () => {
+        test('Element added to end of list', () => {
+            const linkedList = LinkedList.fromValues(10, 20, 30);
+            const element = new TestElement(40, 4);
+            const prevLast = linkedList.at(2);
+            linkedList.append(element);
 
-        expect(linkedList.head.data.getKey()).toBe(20);
-        expect(linkedList.head.next).toBe(originalHead);
-        expect(linkedList.length).toBe(2);
+            expect(prevLast.data.getKey()).toBe(30);
+            expect(prevLast.data.getAuxiliary()).toBe(3);
+            expect(linkedList.at(3).data.getKey()).toBe(40);
+            expect(linkedList.at(3).data.getAuxiliary()).toBe(4);
+        });
     });
 });
 
@@ -114,29 +123,29 @@ describe('#at', () => {
     });
 });
 
-describe('#append', () => {
-    describe('Added to new list', () => {
-        test('Element added to beginning of new list', () => {
-            const linkedList = new LinkedList();
-            const element = new TestElement(10, 1);
-            linkedList.append(element);
-            
-            expect(linkedList.head.data.getKey()).toBe(10);
-        });
+describe('#prepend', () => {
+    test('Adds element to the beginning of the list', () => {
+        let element1 = new TestElement(10, 1);
+        let element2 = new TestElement(20, 2);
+
+        const linkedList = new LinkedList();
+        linkedList.prepend(element1);
+        
+        const originalHead = linkedList.head;
+        linkedList.prepend(element2);
+
+        expect(linkedList.head.data.getKey()).toBe(20);
+        expect(linkedList.head.next).toBe(originalHead);
+        expect(linkedList.length).toBe(2);
     });
+});
 
-    describe('Add element to end of existing list', () => {
-        test('Element added to end of list', () => {
-            const linkedList = LinkedList.fromValues(10, 20, 30);
-            const element = new TestElement(40, 4);
-            const prevLast = linkedList.at(2);
-            linkedList.append(element);
+describe('#size', () => {
+    test('Returns size of LinkedList', () => {
+        const linkedList = LinkedList.fromValues(10, 20);
+        const length = linkedList.size();
 
-            expect(prevLast.data.getKey()).toBe(30);
-            expect(prevLast.data.getAuxiliary()).toBe(3);
-            expect(linkedList.at(3).data.getKey()).toBe(40);
-            expect(linkedList.at(3).data.getAuxiliary()).toBe(4);
-        });
+        expect(length).toBe(1);
     });
 });
 

@@ -29,7 +29,7 @@ export class LinkedList {
         this.length = 0;
     }
 
-    append(element: TestElement) {
+    append(element: TestElement): void|null {
         // Simply prepend if length is 0.
         if (this.length === 0) {
             return this.prepend(element);
@@ -50,7 +50,7 @@ export class LinkedList {
      * @param { number} index The index for the node we want to retrieve.
      * @returns The node at the given index.
      */
-    at(index: number) {
+    at(index: number): LinkedListNode|null {
         // If index greater than list length or less than 0.
         if (index < 0 || index >= this.length) {
             return null;
@@ -85,7 +85,7 @@ export class LinkedList {
      * called head.
      * @returns The first element of the linked list.
      */
-    getFirst() {
+    getFirst(): LinkedListNode {
         return this.head;
     }
 
@@ -93,7 +93,7 @@ export class LinkedList {
      * Getter function for the tail of this linked list.
      * @returns Returns the tail of the linked list.
      */
-    getLast() {
+    getLast(): LinkedListNode|null {
         if (this.head == null) {
             return null;
         }
@@ -104,13 +104,16 @@ export class LinkedList {
         }
         return current;
     }
-    
+
+    pop() {
+        
+    }
     /**
      * Addes element to front of the linked list.
      * @param { TestElement} element The element we want to add to a 
      * LinkListNode of this LinkedList. 
      */
-    prepend(element: TestElement) {
+    prepend(element: TestElement): void {
         const newNode = new LinkedListNode(element, this.head);
         this.head = newNode;
         this.length++;
@@ -120,7 +123,7 @@ export class LinkedList {
      * Returns the value for the length of the LinkedList.
      * @returns The length of the LinkedList.
      */
-    size() {
+    size(): number {
         return this.length;
     }
 
@@ -128,7 +131,7 @@ export class LinkedList {
      * Returns as a string, the contents of the LinkedList.
      * @returns The linked list.
      */
-    toString() {
+    toString(): string {
         let output = '';
         let current = this.head;
 

@@ -64,6 +64,45 @@ export class LinkedList {
     }
 
     /**
+     * Accepts a number as a parameter and performs a search.  If the value 
+     * exists in the list we return true.  Otherwise, we return false.
+     * @param key The value we want to search inside list.
+     * @returns True if value is in the list and otherwise false.
+     */
+    contains(key: number): boolean {
+        let current = this.head;
+        for (let i = 0; i < this.length; i++) {
+            console.log(`data: ${current.data.getKey()}`);
+            if (current.data.getKey() === key) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    /**
+     * Accepts a number as a parameter and performs a search.  If the value 
+     * exists in the list we return its index inside the list.  Otherwise, we 
+     * return null.
+     * @param key The value we want to search inside list.
+     * @returns The index for the value if it exists inside the list.  
+     * Otherwise we return null.
+     */
+    find(key: number): number|null {
+        let current = this.head;
+        for (let i = 0; i < this.length; i++) {
+            console.log(`data: ${current.data.getKey()}`);
+            if (current.data.getKey() === key) {
+                console.log(i);
+                return i;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    /**
      * Creates a LinkedList whose elements key instance variable is set to the 
      * values passed in the function call.
      * @param { number } values An array of values we want to give to each 
@@ -109,7 +148,7 @@ export class LinkedList {
      * Removes last element from a LinkedList.
      * @returns null when we have an empty list.
      */
-    removeLast() {
+    removeLast(): void|null {
         if (this.head == null) {
             return null;
         }

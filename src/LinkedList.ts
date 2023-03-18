@@ -13,13 +13,13 @@ export class LinkedList {
      * The first element of this LinkedList.
      * @type { LinkedListNode }
      */
-    head: LinkedListNode;
+    private head: LinkedListNode;
 
     /**
      * The length of this LinkedList.
      * @type { number }
      */
-    length: number;
+    private length: number;
 
     /**
      * Default constructor that sets head to null and length to 0.
@@ -177,6 +177,46 @@ export class LinkedList {
         const newNode = new LinkedListNode(element, this.head);
         this.head = newNode;
         this.length++;
+    }
+
+    /**
+     * This function is for testing to make sure we can proceed to the actual 
+     * implementation of the merge sort.
+     * @returns 0 if head is null.
+     */
+    selectionSort(): void|null {
+        // Local variables
+        let i = null;
+        let j = null;
+        let min = null;
+
+        // Dummy information for temp variables that is needed for swap.
+        let tempElement = new TestElement(0,0);
+        let temp = new LinkedListNode(tempElement, this.head);
+
+        if (this.head == null) {
+            return null;
+        }
+
+        i = this.head;
+
+        while(i.next != null) {
+            min = i;
+            j = i.next;
+            while(j != null) {
+                // Comparing j.data to min.data
+                if(j.data.compareTo(min.data) <  0) {
+                    min = j;
+                }
+                j = j.next;
+            }
+
+            // Swap data.
+            temp.data = min.data;
+            min.data = i.data;
+            i.data = temp.data;
+            i = i.next;
+        }
     }
 
     /**

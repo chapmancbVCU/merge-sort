@@ -138,6 +138,40 @@ class LinkedList {
         this.length++;
     }
     /**
+     * This function is for testing to make sure we can proceed to the actual
+     * implementation of the merge sort.
+     * @returns 0 if head is null.
+     */
+    selectionSort() {
+        // Local variables
+        let i = null;
+        let j = null;
+        let min = null;
+        // Dummy information for temp variables that is needed for swap.
+        let tempElement = new TestElement_1.TestElement(0, 0);
+        let temp = new LinkedListNode(tempElement, this.head);
+        if (this.head == null) {
+            return null;
+        }
+        i = this.head;
+        while (i.next != null) {
+            min = i;
+            j = i.next;
+            while (j != null) {
+                // Comparing j.data to min.data
+                if (j.data.compareTo(min.data) < 0) {
+                    min = j;
+                }
+                j = j.next;
+            }
+            // Swap data.
+            temp.data = min.data;
+            min.data = i.data;
+            i.data = temp.data;
+            i = i.next;
+        }
+    }
+    /**
      * Returns the value for the length of the LinkedList.
      * @returns The length of the LinkedList.
      */

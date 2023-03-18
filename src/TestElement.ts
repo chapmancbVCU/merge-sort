@@ -1,4 +1,8 @@
+/******************************************************************************
+ * IMPORTS                                                                    *
+ *****************************************************************************/
 import { LinkedList } from "./LinkedList";
+
 
 /**
  * @class A class that creates an element for testing.  Each linked list node 

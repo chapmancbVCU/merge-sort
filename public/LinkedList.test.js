@@ -253,6 +253,26 @@ describe('#removeLast', () => {
     });
 });
 
+describe('#selectionSort', () => {
+    describe('When list is of length 0', () => {
+        test('We return null', () => {
+            const linkedList = new LinkedList();
+            
+            expect(linkedList.selectionSort()).toBeNull();
+        });
+    });
+
+    describe('Sorting a list', () => {
+        test('We sort the list', () => {
+            const linkedList = LinkedList.fromValues(50, 40, 30, 20, 10, 0);
+            linkedList.selectionSort();
+            
+            expect(linkedList.toString()).toBe(
+                '[0 (6)] => [10 (5)] => [20 (4)] => [30 (3)] => [40 (2)] => [50 (1)] => null');
+        });
+    });
+});
+
 describe('#size', () => {
     test('Returns size of LinkedList', () => {
         const linkedList = LinkedList.fromValues(10, 20);

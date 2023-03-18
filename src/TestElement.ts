@@ -13,13 +13,13 @@ export class TestElement {
      * The value that we will used to sort against.
      * @type { number } 
      */
-    key: number;
+    private key: number;
 
     /**
      * The original position in the linked list.
      * @type { number }
      */
-    auxiliary: number;
+    private auxiliary: number;
 
     /**
      * Creates a new TestElement object.

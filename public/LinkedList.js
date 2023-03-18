@@ -55,7 +55,6 @@ class LinkedList {
     contains(key) {
         let current = this.head;
         for (let i = 0; i < this.length; i++) {
-            console.log(`data: ${current.data.getKey()}`);
             if (current.data.getKey() === key) {
                 return true;
             }
@@ -74,7 +73,6 @@ class LinkedList {
     find(key) {
         let current = this.head;
         for (let i = 0; i < this.length; i++) {
-            console.log(`data: ${current.data.getKey()}`);
             if (current.data.getKey() === key) {
                 console.log(i);
                 return i;
@@ -104,6 +102,97 @@ class LinkedList {
             current = current.next;
         }
         return current;
+    }
+    /**
+     * This function perfroms the merging of two linked lists.  It performs
+     * comparison operations to decide order of each element.
+     * @param { LinkedListNode } firstB The head of the left side of the
+     * linked list.
+     * @param { LinkedListNode} firstC The head of the right side of the
+     * linked list.
+     * @returns The head of a newly merged linked list.
+     */
+    merge(firstB, firstC) {
+        // firstA gets initialized to null and gets returned after merging.
+        let firstA = null;
+        /* This is the initial comparison of firstB.data and firstC.data.  The
+        purpose of this comparison is to figure out what firstA shoud be by
+        determining which half othe list's first node is smaller. */
+        if (firstB.data.compareTo(firstC.data) <= 0) {
+            firstA = firstB;
+            firstB = firstB.next;
+        }
+        else {
+            firstA = firstC;
+            firstC = firstC.next;
+        }
+        /* lastA is set to the value of firstA initially but is used to
+        determine the last node of the list befor a non-empty list is
+        concateneated to the list starting with firstA. */
+        let lastA = firstA;
+        // While firstB and firstC are not null, the nodes are compared.
+        while (firstB != null && firstC != null) {
+            if (firstB.data.compareTo(firstC.data) <= 0) {
+                lastA.next = firstB;
+                firstB = firstB.next;
+            }
+            else {
+                lastA.next = firstC;
+                firstC = firstC.next;
+            }
+            lastA = lastA.next;
+        }
+        /* If firstB is not null then it is attached to lastA.next.  Otherwise,
+        if firstC is not null then it is attached to lastA.next. */
+        if (firstB != null) {
+            lastA.next = firstB;
+        }
+        else if (firstC != null) {
+            lastA.next = firstC;
+        }
+        return firstA;
+    }
+    /**
+     * This function contains the merge sort algorithm.  It splits the list in
+     * half and recursively calls itself until you have a list of length 1.
+     * Then merge operations are called to create a sorted linked list.
+     * @param firstA The head of the list that we are sorting.
+     * @returns The head of the list that we are sorting.
+     */
+    mergeSort(firstA) {
+        /* The base case of the recursive algorithm.  The recursion "bottoms
+        out" when the sequence to be sorted has only one node.  Thus, we return
+        it since there is no work to be done. */
+        if (firstA.next == null) {
+            return firstA;
+        }
+        /* LinkedListNodes current and half are used for splitting the list.
+        firstB is used as a pointer for the first half of the list and firstC
+        will be used as a pointer for the second half of the list. */
+        let firstB = firstA;
+        let firstC = null;
+        let current = firstA;
+        let half = firstA;
+        let length = 0;
+        /* We want to determine the center of the linked list so we know how
+        to split it up. */
+        while (current != null) {
+            if (length % 2 == 0 && length != 0) {
+                half = half.next;
+            }
+            current = current.next;
+            length++;
+        }
+        firstC = half.next;
+        // half.next establishes the end of the first half of the list.
+        half.next = null;
+        // Recursive calls for each half of the list.
+        firstB = this.mergeSort(firstB);
+        firstC = this.mergeSort(firstC);
+        // Merge the list back together.
+        firstA = this.merge(firstB, firstC);
+        this.head = firstA;
+        return firstA;
     }
     /**
      * Removes last element from a LinkedList.

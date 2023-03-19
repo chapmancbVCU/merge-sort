@@ -38,16 +38,25 @@ export class TestElement {
     /**
      * Compares the key of this element with another.
      * @param { TestElement } other The element to compare 'this' one with. 
-     * @returns 
+     * @returns The difference of this.key and other.key
      */
     compareTo(other: TestElement): number {
         return this.key - other.key;
     }
 
+    /**
+     * Getter function for value that represents original location in linked 
+     * list.
+     * @returns The auxiliary value.
+     */
     getAuxiliary(): number {
         return this.auxiliary;
     }
     
+    /**
+     * Getter function for value we use to sort against.
+     * @returns The key for this node.
+     */
     getKey(): number {
         return this.key;
     }
